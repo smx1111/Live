@@ -1,21 +1,20 @@
-name: Sync Repository
-
 on:
   schedule:
-    - cron: '1 7 * * *' # 每天午夜执行，你可以根据需要修改时间
+    - cron: '0 0 * * *' # 每天午夜执行，你可以根据需要修改时间
 
 jobs:
   sync:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout target repository
-        uses: actions/checkout@v2
-        with:
-          repository: https://github.com/smx1111/Live # 目标仓库的 URL
-          # token: ${{ secrets.TOKEN }} # 你需要有权限访问目标仓库，这里使用的是 personal access token，存储在仓库的 secrets 中
+      - name: Checkout fork repository
+        run: |
+          git clone https://github.com/smx1111/Live.git my_fork
+          cd my_fork
+
       - name: Configure upstream
         run: |
-          git remote add upstream https://github.com/YueChan/Live.git # 上游仓库的 URL
+          git remote add upstream <upstream_repository> # 上游仓库的 URL
           git fetch upstream
 
       - name: Merge changes from upstream
