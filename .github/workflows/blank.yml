@@ -2,7 +2,7 @@ name: Sync Repository
 
 on:
   schedule:
-    - cron: '49 6 * * *' # 每天午夜执行，你可以根据需要修改时间
+    - cron: '1 7 * * *' # 每天午夜执行，你可以根据需要修改时间
 
 jobs:
   sync:
@@ -11,7 +11,7 @@ jobs:
       - name: Checkout target repository
         uses: actions/checkout@v2
         with:
-          repository: https://github.com/smx1111/Live.git # 目标仓库的 URL
+          repository: https://github.com/smx1111/Live # 目标仓库的 URL
           # token: ${{ secrets.TOKEN }} # 你需要有权限访问目标仓库，这里使用的是 personal access token，存储在仓库的 secrets 中
       - name: Configure upstream
         run: |
