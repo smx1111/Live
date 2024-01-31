@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron: '24 7 * * *' # 每天午夜执行，你可以根据需要修改时间
+    - cron: '32 10 * * *' # 每天午夜执行，你可以根据需要修改时间
 
 jobs:
   sync:
@@ -14,7 +14,7 @@ jobs:
 
       - name: Configure upstream
         run: |
-          git remote add upstream <upstream_repository> # 上游仓库的 URL
+          git remote add upstream https://github.com/YueChan/Live.git # 上游仓库的 URL
           git fetch upstream
 
       - name: Merge changes from upstream
