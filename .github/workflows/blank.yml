@@ -2,7 +2,7 @@ name: Sync Repository
 
 on:
   schedule:
-    - cron: '0 0 * * *' # 每天午夜执行，你可以根据需要修改时间
+    - cron: '48 14 * * *' # 每天午夜执行，你可以根据需要修改时间
 
 jobs:
   sync:
