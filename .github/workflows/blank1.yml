@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron: '39 5 * * *' # 每天午夜执行，你可以根据需要修改时间
+    - cron: '43 7 * * *' # 每天午夜执行，你可以根据需要修改时间
 
 jobs:
   sync:
@@ -9,6 +9,8 @@ jobs:
     steps:
       - name: Checkout fork repository
         run: |
+          git config --global user.email "${{ secrets.EMAIL_NAME }}"
+          git config --global user.name "${{ secrets.USERNAME }}"
           git clone https://github.com/smx1111/Live my_fork
           cd my_fork
           git remote add upstream https://github.com/YueChan/Live.git
